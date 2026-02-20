@@ -135,6 +135,7 @@ class MessageSet(MessageA1Base):
         self.target_humidity = 40
         self.swing = False
         self.anion = False
+        self.filter_cleaning_reminder = False
         self.water_level_set = 50
 
     @property
