@@ -184,6 +184,7 @@ class MideaA1Device(MideaDevice):
         message.target_humidity = self._attributes[DeviceAttributes.target_humidity]
         message.swing = self._attributes[DeviceAttributes.swing]
         message.anion = self._attributes[DeviceAttributes.anion]
+        message.filter_cleaning_reminder = = self._attributes[DeviceAttributes.filter_cleaning_reminder]
         message.water_level_set = int(
             self._attributes[DeviceAttributes.water_level_set],
         )
