@@ -150,8 +150,12 @@ class MessageSet(MessageA1Base):
         target_humidity = self.target_humidity
         # byte8 child_lock
         child_lock = 0x80 if self.child_lock else 0x00
-        # byte9 anion
-        anion = 0x40 if self.anion else 0x00
+        # byte9 logic: Start with 0 and add bits for each feature (anion + filter_reset)
+        byte9_val = 0x00
+        if self.anion:
+            byte9_val |= 0x40  # Add Bit 6
+        if self.filter_reset:
+            byte9_val |= 0x80  # Add Bit 7
         # byte10 swing
         swing = 0x08 if self.swing else 0x00
         # byte 13 water_level_set
@@ -166,7 +170,7 @@ class MessageSet(MessageA1Base):
                 0x00,
                 target_humidity,
                 child_lock,
-                anion,
+                byte9_val,
                 swing,
                 0x00,
                 0x00,
